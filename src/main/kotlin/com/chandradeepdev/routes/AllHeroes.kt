@@ -16,6 +16,7 @@ fun Route.getAllHeroes(){
 
     get("/boruto/heroes") {
         try {
+            //pagination has been added
             val page = call.request.queryParameters["page"]?.toInt() ?: 1
             require(page in 1..5)
 
