@@ -8,13 +8,20 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import jdk.jshell.Snippet
 import org.koin.ktor.plugin.Koin
+import javax.naming.AuthenticationException
 
+
+//configure pages for bad request and unknown end points
 
 fun Application.configureStatusPage(){
 
     install(StatusPages) {
         status(HttpStatusCode.NotFound) { call, status ->
-            call.respondText(text = "404: Page Not Found", status = status)
+            call.respondText(text = "404: Page Not Found", status = HttpStatusCode.NotFound)
+        }
+
+        exception<Throwable> { call, cause ->
+            call.respondText(text = "We have caught an Exception: $cause" , status = HttpStatusCode.OK)
         }
     }
 
