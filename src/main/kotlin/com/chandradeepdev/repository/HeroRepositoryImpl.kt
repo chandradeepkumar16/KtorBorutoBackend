@@ -9,6 +9,7 @@ const val NEXT_PAGE_KEY ="nextPage"
 const val PREV_PAGE_KEY ="prevPage"
 
 class HeroRepositoryImpl: HeroRepository {
+
     override val heroes: Map<Int, List<Hero>> by lazy {
         mapOf(
             1 to page1,

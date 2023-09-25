@@ -1,18 +1,12 @@
 package com.chandradeepdev.plugins
 
-import ch.qos.logback.core.status.Status
-import ch.qos.logback.core.util.StatusPrinter
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
-import jdk.jshell.Snippet
-import org.koin.ktor.plugin.Koin
-import javax.naming.AuthenticationException
 
 
 //configure pages for bad request and unknown end points
-
 fun Application.configureStatusPage(){
 
     install(StatusPages) {
@@ -24,6 +18,5 @@ fun Application.configureStatusPage(){
             call.respondText(text = "We have caught an Exception: $cause" , status = HttpStatusCode.OK)
         }
     }
-
 
 }
